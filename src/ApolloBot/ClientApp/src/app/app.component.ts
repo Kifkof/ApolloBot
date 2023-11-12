@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BASE_URL } from './app.config';
 import { UiModule } from './ui/ui.module';
+import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,7 @@ import { UiModule } from './ui/ui.module';
     NgOptimizedImage,
     HttpClientModule,
     UiModule,
+    LMarkdownEditorModule,
   ],
 })
 export class AppComponent {

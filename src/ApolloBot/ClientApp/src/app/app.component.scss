@@ -24,16 +24,5 @@ form {
   }
   #fields {
     grid-area: fields;
-    ul {
-      display: flex;
-      flex-wrap: wrap;
-      list-style-type: none;
-      padding: 0;
-      li {
-        flex-basis: 50%;
-        display: inline-flex;
-        justify-content: space-around;
-      }
-    }
   }
 }
