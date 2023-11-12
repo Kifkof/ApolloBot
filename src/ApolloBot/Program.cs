@@ -1,3 +1,5 @@
+using ApolloBot.Discord;
+
 namespace ApolloBot
 {
     public class Program
@@ -9,6 +11,11 @@ namespace ApolloBot
             // Add services to the container.
 
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDiscordClient();
+            builder.Services.AddLogging(loggingBuilder =>
+            {
+                loggingBuilder.AddConsole();
+            });
 
             var app = builder.Build();
 
@@ -29,6 +36,8 @@ namespace ApolloBot
                 pattern: "{controller}/{action=Index}/{id?}");
 
             app.MapFallbackToFile("index.html");
+
+            app.MapHealthChecks("/health");
 
             app.Run();
         }
