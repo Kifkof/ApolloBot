@@ -7,6 +7,9 @@ form {
     "main-meta author-icon"
     "fields fields";
   gap: 2rem;
+  label {
+    min-width: 8rem;
+  }
   input {
     margin-bottom: 0.5rem;
   }

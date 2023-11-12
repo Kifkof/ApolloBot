@@ -3,9 +3,9 @@ import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { EmbededMsgFieldComponent } from './components/embeded-msg-field/embeded-msg-field.component';
 import { FormsModule } from '@angular/forms';
-import { InputFieldDirective } from './directives/input-field.directive';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BASE_URL } from './app.config';
+import { UiModule } from './ui/ui.module';
 
 @Component({
   selector: 'app-root',
@@ -18,8 +18,8 @@ import { BASE_URL } from './app.config';
     EmbededMsgFieldComponent,
     FormsModule,
     NgOptimizedImage,
-    InputFieldDirective,
     HttpClientModule,
+    UiModule,
   ],
 })
 export class AppComponent {

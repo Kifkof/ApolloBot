@@ -1,25 +1,32 @@
-<label for="name">Name:</label>
-<input
-  type="text"
-  id="name"
-  name="name"
-  [(ngModel)]="field.name"
-  placeholder="Field title"
-/><br />
-
-<label for="description">Description:</label>
-<input
-  type="text"
-  id="description"
-  name="description"
-  [(ngModel)]="field.description"
-  placeholder="Description"
-/><br />
-
-<label for="inline">Inline:</label>
-<input
-  type="checkbox"
-  id="inline"
-  name="inline"
-  [(ngModel)]="field.inline"
-/><br />
+<div>
+  <label for="name">Name:</label>
+  <input
+    type="text"
+    id="name"
+    name="name"
+    [(ngModel)]="field.name"
+    placeholder="Field title"
+    appInputField
+  />
+</div>
+<div>
+  <label for="description">Description:</label>
+  <input
+    type="text"
+    id="description"
+    name="description"
+    [(ngModel)]="field.description"
+    placeholder="Description"
+    appInputField
+  />
+</div>
+<div class="flex items-center gap-1">
+  <label for="inline">Inline:</label>
+  <input
+    type="checkbox"
+    id="inline"
+    name="inline"
+    [(ngModel)]="field.inline"
+    appInputField
+  />
+</div>
