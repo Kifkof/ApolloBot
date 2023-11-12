@@ -1,0 +1,36 @@
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "main author"
+    "main-meta author-icon"
+    "fields fields";
+  gap: 2rem;
+  input {
+    margin-bottom: 0.5rem;
+  }
+  div {
+    grid-area: main;
+  }
+  #author {
+    grid-area: author;
+  }
+  #author-icon {
+    grid-area: author-icon;
+  }
+  #fields {
+    grid-area: fields;
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      list-style-type: none;
+      padding: 0;
+      li {
+        flex-basis: 50%;
+        display: inline-flex;
+        justify-content: space-around;
+      }
+    }
+  }
+}
