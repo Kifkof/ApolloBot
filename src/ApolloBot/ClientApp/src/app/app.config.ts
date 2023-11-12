@@ -8,7 +8,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     {
       provide: BASE_URL,
-      useFactory: () => document.getElementsByTagName('base')[0]?.href,
+      useFactory: () => document.getElementsByTagName('base')[0]?.href + 'api/',
       deps: [],
     },
   ],

@@ -6,5 +6,14 @@ import { Directive, HostBinding } from '@angular/core';
 })
 export class ButtonStyleDirective {
   @HostBinding('class')
-  styles = ['font-bold', 'outline', 'outline-2', 'm-2', 'p-1', 'bg-white'];
+  styles = [
+    'font-bold',
+    'outline',
+    'outline-1',
+    'm-2',
+    'p-1',
+    'bg-white',
+    'border',
+    'hover:border-slate-400',
+  ];
 }

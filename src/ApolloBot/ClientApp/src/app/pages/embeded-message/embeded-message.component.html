@@ -1,0 +1,121 @@
+<button class="sticky top-0 z-10" (click)="sendMsg()">Send Message</button>
+<form id="embeded-msg-data" class="p-2">
+  <div id="main">
+    <div class="flex items-baseline gap-1">
+      <label for="title">Title:</label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        [(ngModel)]="model.title"
+        placeholder="Some title"
+        appInputField
+      />
+    </div>
+    <div class="flex flex-col gap-1">
+      <label for="description">Description:</label>
+      <md-editor
+        id="description"
+        name="description"
+        [(ngModel)]="model.description"
+        [height]="'200px'"
+        required
+        maxlength="500"
+        placeholder="Some description here"
+      >
+      </md-editor>
+    </div>
+  </div>
+  <aside id="main-meta">
+    <div class="flex items-baseline gap-1">
+      <label for="url">URL:</label>
+      <input
+        type="text"
+        id="url"
+        name="url"
+        [(ngModel)]="model.url"
+        placeholder="https://discord.js.org"
+        appInputField
+      />
+    </div>
+
+    <div class="flex items-baseline gap-1">
+      <label for="thumbnailUrl">Thumbnail URL:</label>
+      <input
+        type="text"
+        id="thumbnailUrl"
+        name="thumbnailUrl"
+        [(ngModel)]="model.thumbnailUrl"
+        placeholder="https://i.imgur.com/AfFp7pu.png"
+        appInputField
+      />
+    </div>
+
+    <div class="flex items-baseline gap-1">
+      <label for="color">Color:</label>
+      <input
+        type="color"
+        id="color"
+        name="color"
+        [(ngModel)]="model.name"
+        appInputField
+      />
+    </div>
+  </aside>
+
+  <div id="author">
+    <div class="flex items-baseline gap-1">
+      <label for="authorName">Author Name:</label>
+      <input
+        type="text"
+        id="authorName"
+        name="authorName"
+        [(ngModel)]="model.authorName"
+        placeholder="Some name"
+        appInputField
+      />
+    </div>
+    <div class="flex items-baseline gap-1">
+      <label for="authorUrl">Author URL:</label>
+      <input
+        type="text"
+        id="authorUrl"
+        name="authorUrl"
+        [(ngModel)]="model.authorUrl"
+        placeholder="https://discord.js.org"
+        appInputField
+      />
+    </div>
+  </div>
+  <aside class="author-icon flex flex-col gap-1">
+    <div class="flex items-baseline gap-1">
+      <label for="authorIconUrl">Author Icon URL:</label>
+      <input
+        type="text"
+        id="authorIconUrl"
+        name="authorIconUrl"
+        [(ngModel)]="model.authorIconUrl"
+        placeholder="https://i.imgur.com/AfFp7pu.png"
+        appInputField
+      />
+    </div>
+
+    <img id="preview" alt="Author Icon preview" [ngSrc]="model.authorIconUrl" />
+  </aside>
+
+  <section id="fields">
+    <button (click)="addField()">Add Field +</button>
+    <ul class="flex flex-wrap p-0 gap-1">
+      <li
+        *ngFor="let field of model.fields; let i = index"
+        class="justify-around p-2"
+      >
+        <app-embeded-msg-field
+          class="inline-flex gap-2"
+          [(field)]="model.fields[i]"
+        />
+      </li>
+    </ul>
+  </section>
+</form>
+{{ model | json }}
