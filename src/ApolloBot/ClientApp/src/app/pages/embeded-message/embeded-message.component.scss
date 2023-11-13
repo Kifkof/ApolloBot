@@ -4,7 +4,8 @@ form {
   grid-template-rows: auto;
   grid-template-areas:
     "main author"
-    "main-meta author-icon"
+    "main main-meta"
+    "footer main-meta"
     "fields fields";
   gap: 2rem;
   label {
@@ -24,5 +25,8 @@ form {
   }
   #fields {
     grid-area: fields;
+  }
+  #footer {
+    grid-area: footer;
   }
 }

@@ -6,7 +6,6 @@
     name="name"
     [(ngModel)]="field.name"
     placeholder="Field title"
-    appInputField
   />
 </div>
 <div class="flex items-baseline gap-1">
@@ -17,16 +16,9 @@
     name="description"
     [(ngModel)]="field.description"
     placeholder="Description"
-    appInputField
   />
 </div>
 <div class="flex items-center gap-1">
   <label for="inline">Inline:</label>
-  <input
-    type="checkbox"
-    id="inline"
-    name="inline"
-    [(ngModel)]="field.inline"
-    appInputField
-  />
+  <input type="checkbox" id="inline" name="inline" [(ngModel)]="field.inline" />
 </div>
