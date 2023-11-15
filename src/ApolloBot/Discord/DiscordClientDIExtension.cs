@@ -1,4 +1,5 @@
-﻿using Discord;
+﻿using ApolloBot.Discord.Configuration;
+using Discord;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
@@ -12,6 +13,15 @@ namespace ApolloBot.Discord
             services.AddHostedService<DiscordClientService>();
             services.AddHealthChecks()
                 .AddCheck<DiscordClientHealthCheck>("discord_client_health_check");
+            services.AddTransient<IDiscordBotTokenProvider, AzureKeyVaultDiscordBotTokenProvider>();
+
+            services.AddOptions<DiscordClientOptions>()
+                .Configure<IConfiguration>((options, configuration) =>
+                {
+                    options.AzureKeyVault = configuration
+                        .GetRequiredSection("DiscordClient:AzureKeyVault")
+                        .Get<AzureKeyVaultConfiguration>();
+                });
 
             return services;
         }

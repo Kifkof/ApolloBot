@@ -7,40 +7,45 @@ namespace ApolloBot.Discord
     {
         private readonly ILogger<DiscordClientService> logger;
         private readonly DiscordClientHealthCheck discordClientHealthCheck;
+        private readonly IDiscordBotTokenProvider discordBotTokenProvider;
         private DiscordSocketClient? client;
 
-        public DiscordClientService(ILogger<DiscordClientService> logger, DiscordClientHealthCheck discordClientHealthCheck)
+        public DiscordClientService(ILogger<DiscordClientService> logger, 
+            DiscordClientHealthCheck discordClientHealthCheck, 
+            IDiscordBotTokenProvider discordBotTokenProvider)
         {
             this.logger = logger;
             this.discordClientHealthCheck = discordClientHealthCheck;
+            this.discordBotTokenProvider = discordBotTokenProvider;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            client = new DiscordSocketClient();
-            client.Log += OnDiscordLogAsync;
+            this.client = new DiscordSocketClient();
+            this.client.Log += this.OnDiscordLogAsync;
 
-            await client.LoginAsync(TokenType.Bot, "BOT_TOKEN_HERE");
-            await client.StartAsync();
+            var botToken = await this.discordBotTokenProvider.GetBotTokenAsync();
 
-            client.Ready += ClientOnReady;
+            await this.client.LoginAsync(TokenType.Bot, botToken);
+            await this.client.StartAsync();
+
+            this.client.Ready += this.ClientOnReady;
 
             while (!stoppingToken.IsCancellationRequested)
             {
-                this.discordClientHealthCheck.ConnectionState = client.ConnectionState;
+                this.discordClientHealthCheck.ConnectionState = this.client.ConnectionState;
                 await Task.Delay(2000, stoppingToken);
             }
 
-            await client.StopAsync();
+            await this.client.StopAsync();
         }
 
         private async Task ClientOnReady()
         {
-            var botTestChannel = client!.GetChannel(1150733956577234984);
+            var botTestChannel = this.client!.GetChannel(1150733956577234984);
             if (botTestChannel is ITextChannel textChannel)
             {
-                var knoggi = await textChannel.GetUserAsync(177729405890723840);
-                await textChannel.SendMessageAsync($"Dä {knoggi.DisplayName} isch en knilsch", true);
+                await textChannel.SendMessageAsync($"Test Message with Key Vault", true);
                 this.logger.LogInformation("Startup Message Send");
             }
         }
