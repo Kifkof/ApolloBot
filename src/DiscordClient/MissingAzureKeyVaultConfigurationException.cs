@@ -1,4 +1,4 @@
-﻿namespace ApolloBot.Discord;
+﻿namespace DiscordClient;
 
 internal class MissingAzureKeyVaultConfigurationException : Exception
 {

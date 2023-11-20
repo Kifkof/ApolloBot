@@ -1,4 +1,4 @@
-﻿namespace ApolloBot.Discord;
+﻿namespace DiscordClient;
 
 public interface IDiscordBotTokenProvider
 {

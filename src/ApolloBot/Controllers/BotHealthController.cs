@@ -1,4 +1,4 @@
-﻿using ApolloBot.Discord;
+﻿using DiscordClient;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApolloBot.Controllers
@@ -9,7 +9,7 @@ namespace ApolloBot.Controllers
     {
         private readonly DiscordClientHealthCheck discordClientHealthCheck;
 
-        public BotHealthController( DiscordClientHealthCheck discordClientHealthCheck)
+        public BotHealthController(DiscordClientHealthCheck discordClientHealthCheck)
         {
             this.discordClientHealthCheck = discordClientHealthCheck;
         }

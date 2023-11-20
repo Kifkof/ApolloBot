@@ -1,4 +1,4 @@
-﻿namespace ApolloBot.Discord.Configuration;
+﻿namespace DiscordClient.Configuration;
 
 public class DiscordClientOptions
 {

@@ -1,9 +1,11 @@
-﻿using ApolloBot.Discord.Configuration;
-using Discord;
+﻿using Discord;
+using DiscordClient.Configuration;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 
-namespace ApolloBot.Discord
+namespace DiscordClient
 {
     public static class DiscordClientDIExtension
     {

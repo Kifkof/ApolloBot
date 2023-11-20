@@ -1,10 +1,10 @@
 ﻿using System.Security.Cryptography.X509Certificates;
-using ApolloBot.Discord.Configuration;
 using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
+using DiscordClient.Configuration;
 using Microsoft.Extensions.Options;
 
-namespace ApolloBot.Discord;
+namespace DiscordClient;
 
 internal class AzureKeyVaultDiscordBotTokenProvider : IDiscordBotTokenProvider
 {

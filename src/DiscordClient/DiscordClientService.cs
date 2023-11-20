@@ -1,7 +1,9 @@
 ﻿using Discord;
 using Discord.WebSocket;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
-namespace ApolloBot.Discord
+namespace DiscordClient
 {
     public class DiscordClientService : BackgroundService
     {

@@ -1,4 +1,5 @@
-using ApolloBot.Discord;
+using Apollo;
+using DiscordClient;
 
 namespace ApolloBot
 {
@@ -12,6 +13,8 @@ namespace ApolloBot
 
             builder.Services.AddControllersWithViews();
             builder.Services.AddDiscordClient();
+            builder.Services.AddApollo();
+
             builder.Services.AddLogging(loggingBuilder =>
             {
                 loggingBuilder.AddConsole();
@@ -30,6 +33,7 @@ namespace ApolloBot
             app.UseStaticFiles();
             app.UseRouting();
 
+            app.Services.ConfigureApollo();
 
             app.MapControllerRoute(
                 name: "default",
