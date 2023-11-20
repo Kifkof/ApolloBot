@@ -13,6 +13,7 @@ namespace Apollo
         public static IServiceCollection AddApollo(this IServiceCollection services)
         {
             services.AddWorkflow();
+            services.AddTransient<StartStep>();
             return services;
         }
 

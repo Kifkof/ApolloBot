@@ -15,25 +15,32 @@ namespace Apollo.Api
         }
 
         [HttpGet]
-        public List<EmbeddedMessageDto> GetAllMessages()
+        public List<EmbeddedMessageDto> GetAllMessages(CancellationToken cancellationToken)
         {
             return new List<EmbeddedMessageDto>();
         }
 
         [HttpGet("{messageId:guid}")]
-        public EmbeddedMessageDto GetMessageById(Guid messageId)
+        public EmbeddedMessageDto GetMessageById(Guid messageId, CancellationToken cancellationToken)
         {
             return new EmbeddedMessageDto();
         }
 
         [HttpPost]
-        public async Task<string> Post([FromBody] EmbeddedMessageDto embeddedMessageDto)
+        public async Task<ActivityResult> Post([FromBody] EmbeddedMessageDto embeddedMessageDto, CancellationToken cancellationToken)
         {
             var embeddedMessageRequest = new EmbeddedMessageRequest()
             {
                 Id = embeddedMessageDto.Id
             };
-            return await this.workflowHost.StartWorkflow(EmbeddedMessageWorkflow.Identifier, embeddedMessageRequest);
+            var correlationId = Guid.NewGuid();
+            await this.workflowHost.StartWorkflow(EmbeddedMessageWorkflow.Identifier, embeddedMessageRequest, correlationId.ToString());
+            return new ActivityResult { CorrelationId = correlationId };
         }
+    }
+
+    public class ActivityResult
+    {
+        public required Guid CorrelationId { get; init; }
     }
 }

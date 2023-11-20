@@ -34,6 +34,6 @@ export class EmbededMessageComponent {
   httpClient = inject(HttpClient);
   baseUrl = inject(BASE_URL);
   sendMsg() {
-    this.httpClient.post(this.baseUrl + 'embeddedMessages', this.model).subscribe();
+    this.httpClient.post<string>(this.baseUrl + 'EmbeddedMessages', this.model).subscribe(i => console.log(i));
   }
 }
